@@ -2,7 +2,8 @@
 
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
-alias s='open -a "Sublime Text"'
+# alias s='open -a "Sublime Text"'
+# not working at this moment
 
 # Color LS
 colorflag="-G"
@@ -10,6 +11,10 @@ alias ls="command ls ${colorflag}"
 alias l="ls -lF ${colorflag}" # all files, in long format
 alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
 alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
+
+# Color GREP
+GREP_COLOR="1;32"
+alias grep='grep --color=auto'
 
 # Quicker navigation
 alias ..="cd .."
