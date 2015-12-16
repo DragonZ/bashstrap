@@ -5,6 +5,8 @@
 # alias s='open -a "Sublime Text"'
 # not working at this moment
 
+# set su
+
 # Color LS
 colorflag="-G"
 alias ls="command ls ${colorflag}"
@@ -99,4 +101,5 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # init z! (https://github.com/rupa/z)
-. ~/z.sh
+# . ~/z.sh
+# no need for this @ this moment
