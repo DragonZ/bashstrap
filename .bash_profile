@@ -2,7 +2,7 @@
 
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
-# alias s='open -a "Sublime Text"'
+alias edit='open -a "Sublime Text"'
 # not working at this moment
 
 # set su
@@ -36,6 +36,7 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m' # requires you to type a commit message
+alias gd='git diff'
 alias gp='git push'
 alias grm='git rm $(git ls-files --deleted)'
 
@@ -81,7 +82,7 @@ export RESET
 
 # Git branch details
 function parse_git_dirty() {
-	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+	[[ $(git status 2> /dev/null | tail -n1) != *"nothing to commit, working tree clean"* ]] && echo "*"
 }
 function parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
@@ -89,9 +90,9 @@ function parse_git_branch() {
 
 # Change this symbol to something sweet.
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="⚡ "
+symbol="⚡  "
 
-export PS1="\[${MAGENTA}\]\u \[$RESET\]in \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol\[$RESET\]"
+export PS1="\[${MAGENTA}\]\u \[$RESET\]in \[$GREEN\]\w [\D{%D - %r}]\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol\[$RESET\]"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
